@@ -18,7 +18,7 @@ def render(data):
     template = open("helper_template.html", "r").read()
     t        = Template(template)
     result = t.render(data=data, convert=shell_to_html, shell_css=shell_css)
-    open("helpers.html", "w").write(result)
+    open("index.html", "w").write(result)
 
 ##############################################################################
 
