@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>App Helpers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="./static/css/open-iconic-bootstrap.css" media="screen">
+</head>
+<body>
+
+<div id="main" style="max-width: 800px; margin-left: auto; margin-right:auto;">
+
+    {% for category, helpers in data.items() %}
+
+    <br>
+    <br>
+    <br>
+
+    <h3 style="text-transform: uppercase; font-weight: bold">{{ category }}</h3>
+
+    {% for h in helpers %}
+
+	<div class="card" style="margin-bottom:0.5rem">
+	  <div class="card-body" style="padding-top: 0.8rem; padding-bottom: 0.8rem;">
+        <div data-toggle="collapse" href="#collapse-{{ h.name }}" style="cursor:pointer">
+            <h5 class="card-title"><tt>{{ h.name }}</tt></h5>
+            <h6 class="card-subtitle text-muted">{{ h.brief }}</h6>
+        </div>
+        <div id="collapse-{{ h.name }}" class="collapse hide" role="tabpanel">
+		<hr>
+		<p>
+            {% if not '\n' in h.usage %}
+            <strong>Usage</strong> : <code>{{ h.usage }}</code>
+            {% else %}
+            <strong>Usage</strong> : <code style="display:block;
+                white-space:pre-wrap; margin-left:20px; margin-right:20px; ">{{ h.usage }}</code>
+            {% endif %}
+		</p>
+        {% if h.args %}
+		<p>
+			<strong>Arguments</strong>
+			<ul>
+                {% for name, descr in h.args %}
+                <li><code>{{ name }}</code> : {{ descr }}</li>
+                {% endfor %}
+			</ul>
+		</p>
+        {% endif %}
+        {% if h.ret %}
+		<p>
+            <strong>Returns</strong> : {{ h.ret }}
+		</p>
+        {% endif %}
+        {% if h.example %}
+		<p>
+            <strong>Example</strong> : <code>{{ h.example }}</code>
+		</p>
+        {% endif %}
+        {% if h.details %}
+		<p>
+			<strong>Details</strong>
+			<p>
+            {{ h.details.replace('\n', '</br>') }}
+			</p>
+		</p>
+        {% endif %}
+	  </div>
+	  </div>
+	
+    </div>
+
+    {% endfor %}
+    {% endfor %}
+
+</div>
+
+<script src="./static/js/popper.min.js"></script>
+<script src="./static/js/jquery.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
