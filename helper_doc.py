@@ -148,7 +148,7 @@ def malformed_error(line_number):
 
 def main():
 
-    helper_files = glob.glob("../data/helpers.d/*")
+    helper_files = glob.glob("./yunohost/data/helpers.d/*")
     helpers = {}
 
     for helper_file in helper_files:
