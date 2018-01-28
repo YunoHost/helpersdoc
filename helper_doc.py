@@ -5,6 +5,7 @@ import glob
 
 def render(data):
 
+    import datetime
     from jinja2 import Template
     from ansi2html import Ansi2HTMLConverter
     from ansi2html.style import get_styles
@@ -17,6 +18,7 @@ def render(data):
 
     template = open("helper_template.html", "r").read()
     t        = Template(template)
+    t.globals['now'] = datetime.datetime.utcnow
     result = t.render(data=data, convert=shell_to_html, shell_css=shell_css)
     open("index.html", "w").write(result)
 
@@ -143,7 +145,6 @@ def is_global_comment(line):
     return line.startswith('#')
 
 def malformed_error(line_number):
-    import pdb; pdb.set_trace()
     return "Malformed file line {} ?".format(line_number)
 
 def main():

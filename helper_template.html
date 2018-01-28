@@ -13,6 +13,11 @@
 
 <div id="main" style="max-width: 800px; margin-left: auto; margin-right:auto;">
 
+    <br>
+    <br>
+
+    <h1 class="text-center">YunoHost App Helpers</h1>
+
     {% for category, helpers in data.items() %}
 
     <br>
@@ -75,6 +80,15 @@
     {% endfor %}
     {% endfor %}
 
+</div>
+
+<br>
+<br>
+<br>
+
+<div id="footer" class="text-center">
+    <hr>
+    <p>Generated with <a href="https://github.com/YunoHost/helpersdoc">this tool</a> on {{ now() }}</p>
 </div>
 
 <script src="./static/js/popper.min.js"></script>
