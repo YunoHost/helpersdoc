@@ -38,35 +38,35 @@
 		<hr>
 		<p>
             {% if not '\n' in h.usage %}
-            <strong>Usage</strong> : <code>{{ h.usage }}</code>
+            <strong>Usage</strong>: <code>{{ h.usage }}</code>
             {% else %}
-            <strong>Usage</strong> : <code style="display:block;
+            <strong>Usage</strong>: <code style="display:block;
                 white-space:pre-wrap; margin-left:20px; margin-right:20px; ">{{ h.usage }}</code>
             {% endif %}
 		</p>
         {% if h.args %}
 		<p>
-			<strong>Arguments</strong>
+			<strong>Arguments;</strong>
 			<ul>
                 {% for name, descr in h.args %}
-                <li><code>{{ name }}</code> : {{ descr }}</li>
+                <li><code>{{ name }}</code>: {{ descr }}</li>
                 {% endfor %}
 			</ul>
 		</p>
         {% endif %}
         {% if h.ret %}
 		<p>
-            <strong>Returns</strong> : {{ h.ret }}
+            <strong>Returns</strong>: {{ h.ret }}
 		</p>
         {% endif %}
         {% if h.example %}
 		<p>
-            <strong>Example</strong> : <code>{{ h.example }}</code>
+            <strong>Example</strong>: <code>{{ h.example }}</code>
 		</p>
         {% endif %}
         {% if h.details %}
 		<p>
-			<strong>Details</strong>
+			<strong>Details:</strong>
 			<p>
             {{ h.details.replace('\n', '</br>') }}
 			</p>
