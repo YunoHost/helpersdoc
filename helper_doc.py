@@ -79,7 +79,9 @@ class Parser():
                     current_reading = "void"
 
                     # Then we keep this bloc and start a new one
-                    self.blocks.append(current_block)
+                    # (we ignore helpers containing [internal] ...)
+                    if not "[internal]" in current_block["comments"]:
+                        self.blocks.append(current_block)
                     current_block = { "name": None,
                                       "line": -1,
                                       "comments": [],
